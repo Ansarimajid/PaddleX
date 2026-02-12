@@ -66,8 +66,9 @@ DISABLE_DEVICE_FALLBACK = get_flag_from_env_var(
 )
 
 MODEL_SOURCE = os.environ.get("PADDLE_PDX_MODEL_SOURCE", "huggingface").lower()
-DISABLE_MODEL_SOURCE_CHECK = os.environ.get(
-    "PADDLE_PDX_DISABLE_MODEL_SOURCE_CHECK", False
+DISABLE_MODEL_SOURCE_CHECK = get_flag_from_env_var(
+    "PADDLE_PDX_DISABLE_MODEL_SOURCE_CHECK",
+    get_flag_from_env_var("DISABLE_MODEL_SOURCE_CHECK", False),
 )
 
 HUGGING_FACE_ENDPOINT = os.environ.get(
